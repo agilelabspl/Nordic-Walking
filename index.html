@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordic Walking Polska 2026 — Kalendarz zawodów</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --white: #ffffff;
+            --bg: #fafafa;
+            --gray-50: #f8f8f8;
+            --gray-100: #f0f0f0;
+            --gray-200: #e4e4e4;
+            --gray-300: #d1d1d1;
+            --gray-400: #a0a0a0;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-900: #171717;
+            --green-50: #f0fdf0;
+            --green-100: #dcfce7;
+            --green-200: #bbf7d0;
+            --green-500: #22c55e;
+            --green-600: #16a34a;
+            --green-700: #15803d;
+            --green-800: #166534;
+            --green-900: #14532d;
+            --amber-50: #fffbeb;
+            --amber-100: #fef3c7;
+            --amber-600: #d97706;
+            --amber-700: #b45309;
+            --blue-50: #eff6ff;
+            --blue-600: #2563eb;
+            --purple-50: #faf5ff;
+            --purple-600: #9333ea;
+            --red-50: #fef2f2;
+            --red-600: #dc2626;
+
+            /* Semantic tokens */
+            --text-primary: var(--gray-900);
+            --text-secondary: var(--gray-600);
+            --text-muted: var(--gray-500);
+            --text-subtle: var(--gray-400);
+            --border-default: var(--gray-300);
+            --border-light: var(--gray-200);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--gray-900);
+            font-size: 18px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: clamp(4rem, 12vh, 8rem) 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(22,163,74,0.06) 0%, transparent 70%);
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .hero-poles {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.2s forwards;
+        }
+
+        .hero-pole {
+            width: 3px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--green-600), var(--green-200));
+            border-radius: 2px;
+            transform: rotate(-15deg);
+        }
+
+        .hero-pole:last-child {
+            transform: rotate(15deg);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--green-50);
+            border: 1px solid var(--green-200);
+            border-radius: 100px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--green-700);
+            letter-spacing: 0.04em;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out 0.4s forwards;
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green-500);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .hero-title .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-title .line span {
+            display: inline-block;
+            transform: translateY(110%);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-title .line:nth-child(1) span { animation-delay: 0.5s; }
+        .hero-title .line:nth-child(2) span { animation-delay: 0.65s; }
+        .hero-title .line:nth-child(3) span { animation-delay: 0.8s; }
+
+        .hero-title .accent {
+            color: var(--green-600);
+        }
+
+        .hero-sub {
+            font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 580px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1.1s forwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1.3s forwards;
+        }
+
+        .hero-stat { text-align: center; }
+
+        .hero-stat-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-stat-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 4px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 3rem;
+            padding: 16px 32px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--green-700);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1.5s forwards;
+        }
+
+        .hero-cta:hover {
+            background: var(--green-800);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(22,163,74,0.3);
+        }
+
+        .hero-cta svg { width: 16px; height: 16px; }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1.8s forwards;
+        }
+
+        .hero-scroll span {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray-300);
+        }
+
+        .hero-scroll .line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gray-300), transparent);
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+
+        /* ── STICKY NAV ── */
+        .month-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-light);
+            transition: box-shadow 0.3s;
+        }
+
+        .month-nav.scrolled {
+            box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        }
+
+        .month-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 0 2rem;
+        }
+
+        .month-nav-inner::-webkit-scrollbar { display: none; }
+
+
+        .month-btn {
+            padding: 1rem 1.1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: none;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            position: relative;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .month-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 24px;
+            height: 2px;
+            background: var(--green-600);
+            border-radius: 2px;
+            transition: transform 0.2s;
+        }
+
+        .month-btn:hover { color: var(--gray-700); }
+        .month-btn:hover::after { transform: translateX(-50%) scaleX(1); }
+        .month-btn.active { color: var(--green-700); font-weight: 600; }
+        .month-btn.active::after { transform: translateX(-50%) scaleX(1); }
+
+        .month-btn .count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: var(--green-50);
+            color: var(--green-700);
+            border-radius: 100px;
+            margin-left: 4px;
+            padding: 0 5px;
+        }
+
+        .month-btn.active .count {
+            background: var(--green-700);
+            color: var(--white);
+        }
+
+        /* ── DISTANCE FILTER ── */
+        .dist-filter-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .dist-filter {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.7rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .dist-filter::-webkit-scrollbar { display: none; }
+
+        .dist-filter-label {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-subtle);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+            margin-right: 6px;
+        }
+
+        .dist-filter-btn {
+            padding: 6px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--gray-50);
+            border: 1.5px solid var(--gray-100);
+            border-radius: 100px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .dist-filter-btn:hover {
+            border-color: var(--green-200);
+            background: var(--green-50);
+            color: var(--green-700);
+        }
+
+        .dist-filter-btn.active {
+            background: var(--green-700);
+            color: var(--white);
+            border-color: var(--green-700);
+        }
+
+        /* ── CONTENT ── */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 6rem;
+        }
+
+        .month-section {
+            padding-top: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .month-header {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .month-name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            letter-spacing: -0.03em;
+        }
+
+        .month-year {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-subtle);
+        }
+
+        .month-count {
+            margin-left: auto;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* ── EVENT CARDS ── */
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .event-card {
+            display: grid;
+            grid-template-columns: 84px 1fr auto;
+            gap: 1.6rem;
+            align-items: start;
+            padding: 1.5rem 2rem;
+            background: var(--white);
+            border: 1.5px solid var(--border-default);
+            border-radius: 14px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        .event-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .event-card:hover {
+            border-color: var(--green-500);
+            box-shadow: 0 4px 20px rgba(22,163,74,0.08);
+            transform: translateY(-2px);
+        }
+
+        .event-card.highlight {
+            border-color: var(--border-default);
+            background: var(--white);
+        }
+
+        .event-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .event-card.highlight .event-date {
+            background: var(--gray-50);
+        }
+
+        .event-date-day {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .event-date-month {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--green-700);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 2px;
+        }
+
+        .event-body {
+            min-width: 0;
+        }
+
+        .event-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 6px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .badge-liga { background: var(--green-50); color: var(--green-700); }
+        .badge-mp { background: var(--amber-50); color: var(--amber-700); }
+        .badge-inws { background: var(--purple-50); color: var(--purple-600); }
+        .badge-me { background: var(--red-50); color: var(--red-600); }
+        .badge-puchar { background: var(--blue-50); color: var(--blue-600); }
+        .badge-local { background: var(--gray-50); color: var(--gray-600); }
+        .badge-ultra { background: var(--amber-100); color: var(--amber-700); }
+        .badge-fest { background: var(--blue-50); color: var(--blue-600); }
+
+        .event-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .event-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .event-meta-item svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            color: var(--text-subtle);
+        }
+
+        .event-distances {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .dist-tag {
+            padding: 5px 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--green-700);
+            background: var(--green-50);
+            border-radius: 6px;
+        }
+
+        .event-card.highlight .dist-tag {
+            background: var(--green-50);
+        }
+
+        .event-link {
+            align-self: center;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--green-700);
+            background: var(--green-50);
+            border: 1px solid var(--green-100);
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .event-link:hover {
+            background: var(--green-100);
+            border-color: var(--green-200);
+        }
+
+        .event-link svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s;
+        }
+
+        .event-link:hover svg { transform: translateX(2px); }
+
+        /* ── WHAT IS NW SECTION ── */
+        .nw-info {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nw-info-text h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .nw-info-text p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .nw-info-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .nw-feature {
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-radius: 14px;
+            transition: background 0.2s;
+        }
+
+        .nw-feature:hover { background: var(--green-50); }
+
+        .nw-feature-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .nw-feature h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .nw-feature p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ── INFO BAR ── */
+        .info-bar {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .info-bar-inner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--gray-100);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .info-item {
+            padding: 1.5rem;
+            background: var(--gray-50);
+            transition: background 0.2s;
+        }
+
+        .info-item:hover { background: var(--green-50); }
+
+        .info-item h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 6px;
+        }
+
+        .info-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .info-item a {
+            color: var(--green-700);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-item a:hover { text-decoration: underline; }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--green-700);
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.02em;
+        }
+
+        footer p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-sources {
+            font-size: 0.78rem;
+            color: var(--text-subtle);
+        }
+
+        .footer-sources a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-sources a:hover { color: var(--green-700); }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(110%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(-4px); opacity: 0.4; }
+            50% { transform: translateY(4px); opacity: 1; }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .content { padding: 2rem 1rem 6rem; }
+
+            .dist-filter { padding: 0.5rem 1rem; gap: 4px; }
+            .dist-filter-btn { font-size: 0.75rem; padding: 4px 10px; }
+
+            .event-card {
+                grid-template-columns: 56px 1fr;
+                gap: 0.8rem;
+                padding: 1.2rem 1rem;
+            }
+
+            .event-link {
+                grid-column: 1 / -1;
+                justify-self: start;
+            }
+
+            .hero-stats { gap: 2rem; }
+
+            .nw-info {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nw-info-features {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .info-bar-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .month-name { font-size: 1.4rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats { flex-direction: column; gap: 1.5rem; }
+            .nw-info-features { grid-template-columns: 1fr; }
+            .info-bar-inner { grid-template-columns: 1fr; }
+        }
+        /* Scroll-to-top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--green-700);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            z-index: 999;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .scroll-top:hover {
+            background: var(--green-800);
+        }
+        .scroll-top svg {
+            width: 22px;
+            height: 22px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="hero-badge"><span class="dot"></span> Sezon 2026</div>
+
+    <h1 class="hero-title">
+        <span class="line"><span>Nordic Walking</span></span>
+        <span class="line"><span>Kalendarz <span class="accent">Zawodów</span></span></span>
+    </h1>
+
+    <p class="hero-sub">Kompletny kalendarz zawodów, lig, mistrzostw i lokalnych marszów Nordic Walking na terenie Polski.<br>Zaplanuj swój sezon startowy.</p>
+
+    <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">74</div><div class="hero-stat-label">Wydarzeń</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-label">Miesięcy</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Serii</div></div>
+    </div>
+
+
+    <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="line"></div>
+    </div>
+</section>
+
+<!-- ── MONTH NAV ── -->
+<nav class="month-nav" id="monthNav">
+    <div class="month-nav-inner">
+        <button class="month-btn active" data-month="all">Wszystkie <span class="count">74</span></button>
+        <button class="month-btn" data-month="2">Lut <span class="count">10</span></button>
+        <button class="month-btn" data-month="3">Mar <span class="count">20</span></button>
+        <button class="month-btn" data-month="4">Kwi <span class="count">12</span></button>
+        <button class="month-btn" data-month="5">Maj <span class="count">9</span></button>
+        <button class="month-btn" data-month="6">Cze <span class="count">8</span></button>
+        <button class="month-btn" data-month="7">Lip <span class="count">5</span></button>
+        <button class="month-btn" data-month="8">Sie <span class="count">2</span></button>
+        <button class="month-btn" data-month="9">Wrz <span class="count">3</span></button>
+        <button class="month-btn" data-month="10">Paź <span class="count">4</span></button>
+        <button class="month-btn" data-month="11">Lis <span class="count">1</span></button>
+    </div>
+</nav>
+
+<!-- ── DISTANCE FILTER ── -->
+<div class="dist-filter-wrap">
+    <div class="dist-filter" id="distFilter">
+        <span class="dist-filter-label">Dystans:</span>
+        <button class="dist-filter-btn active" data-dist="all">Wszystkie</button>
+    </div>
+</div>
+
+<!-- ── EVENTS ── -->
+<div class="content" id="events">
+
+    <!-- LUTY -->
+    <div class="month-section" data-section-month="2">
+        <div class="month-header">
+            <div class="month-name">Luty</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">10 wydarzeń</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">08</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Zimowa Zawierucha 2026</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bobrowniki, woj. łódzkie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">14</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Cykl GP</span></div>
+                    <div class="event-title">Bieg Walentynkowy — Grand Prix Trójmiasta 2/3</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Sopot, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">14</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Zdobywców Modyni</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Modyń, woj. małopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">8,5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">14</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Walentynkowy — Poznań</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Poznań, woj. wielkopolskie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">14</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">NW</span></div>
+                    <div class="event-title">Walentynkowy Marsz Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Knurów, woj. śląskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">6 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">15</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">NW + Bieg</span></div>
+                    <div class="event-title">XI Oleszyce Trail Półmaraton × Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Oleszyce, woj. podkarpackie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">9 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">15</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Walentynkowy</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Piastów, woj. mazowieckie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">3 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">21</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg ku korzeniom miłości</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Korzonek, woj. śląskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">22</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Morsa im. R. Flisikowskiego</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Garczyn, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">6 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="2">
+                <div class="event-date"><div class="event-date-day">22</div><div class="event-date-month">Lut</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">XI Bieg Zaślubinowy Władysławowo–Puck</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Władysławowo, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">11,5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MARZEC -->
+    <div class="month-section" data-section-month="3">
+        <div class="month-header">
+            <div class="month-name">Marzec</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">20 wydarzeń</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">01</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Niezłomnych im. mjr. Zenona Wechmanna</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Luboń, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">01</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-mp">Mistrzostwa NW</span></div>
+                    <div class="event-title">Baltic Challenge Nadmorskie Mistrzostwa Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ustka, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">01</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Pamięci Żołnierzy Wyklętych</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Płock, woj. mazowieckie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">01</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Tropem Wilczym</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Szubin, woj. kujawsko-pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">01</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Tropem Wilczym Łomianki</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Dziekanów Leśny, woj. mazowieckie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">01</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Pamięci Żołnierzy Wyklętych</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Police, woj. zachodniopomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">07</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Zabiegana Kobieta</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ustroń, woj. śląskie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">07</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">XIV Zimowy Bieg Dębowy</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Dąbrowa, woj. kujawsko-pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">07</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-ultra">Ultra</span></div>
+                    <div class="event-title">Ultra Zadek 2026</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kędzierzyn-Koźle, woj. opolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">30 km</span><span class="dist-tag">50 km</span><span class="dist-tag">70 km</span><span class="dist-tag">100 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">08</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Cykl GP</span></div>
+                    <div class="event-title">Bieg Kobiet — Grand Prix Trójmiasta 3/3</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Gdynia, woj. pomorskie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">08</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">NW + Bieg</span></div>
+                    <div class="event-title">VIII Kurpiowski Bieg Morsa oraz Marsz Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Serafin, woj. mazowieckie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">08</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">XVI Bieg Charytatywny im. chor. K. Masiowskiego</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Czaplinek, woj. zachodniopomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">08</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">II Bieg Trzech Wież</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Biała, woj. opolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">14</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Zielonych Sznurowadeł</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Celejów k/Puław, woj. lubelskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">14</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">VIII Bieg Zmarźlaka</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Laski, woj. mazowieckie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">15</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">X Bieg Pamięci Żołnierzy Wyklętych</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Jastrzębia, woj. mazowieckie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">21</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-mp">Mistrzostwa</span></div>
+                    <div class="event-title">Trzecie Górskie Mistrzostwa Bydgoszczy w Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bydgoszcz, woj. kujawsko-pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">21</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">III Wielkopolski Bieg Nauczycielek i Nauczycieli</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Poznań, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="3">
+                <div class="event-date"><div class="event-date-day">22</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Wiosenne Zabieganie</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Łódź, woj. łódzkie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">6 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card highlight" data-month="3">
+                <div class="event-date"><div class="event-date-day">28</div><div class="event-date-month">Mar</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-inws">INWS</span><span class="badge badge-mp">MP Górskie</span></div>
+                    <div class="event-title">Otwarte Mistrzostwa Polski w Półmaratonie Górskim NW</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Prudnik, woj. opolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">21 km (górski)</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KWIECIEŃ -->
+    <div class="month-section" data-section-month="4">
+        <div class="month-header">
+            <div class="month-name">Kwiecień</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">12 wydarzeń</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">11</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-puchar">Puchar PP</span></div>
+                    <div class="event-title">Puchar Polski Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bytów, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span><span class="dist-tag">20 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">11</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-ultra">Ultra</span></div>
+                    <div class="event-title">Ultra Miles Of Beskid Wyspowy</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Łącko, woj. małopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">22,5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">12</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">NW + Bieg</span></div>
+                    <div class="event-title">XIV Kłobucki Bieg Leśny i Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kłobuck, woj. śląskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">6,5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">12</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">NW</span></div>
+                    <div class="event-title">Charytatywny Marsz NW „Z sercem na dłoni"</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Świerklany, woj. śląskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5,5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">12</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">IV Bieg Razem dla Autyzmu</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kcynia, woj. kujawsko-pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">18</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-liga">Liga Zachodu</span></div>
+                    <div class="event-title">Liga Zachodu Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Czerwonak, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">25</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-ultra">Ultra</span></div>
+                    <div class="event-title">Warta Trail 24</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Patrzyków, woj. łódzkie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">24h</span><span class="dist-tag">12h</span><span class="dist-tag">6h</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">26</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">VI Budzyńska Dziesiątka 2026</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Budzyń, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">26</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">ATT Run Fun — Półmaraton Polkowicki</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Polkowice, woj. dolnośląskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">26</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">XI Mount Everest</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bytów, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">26</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">XII. Bieg nad Tanwią</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Susiec, woj. lubelskie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="4">
+                <div class="event-date"><div class="event-date-day">26</div><div class="event-date-month">Kwi</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">23 Bieg Jakubowy</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Olsztyn, woj. warmińsko-mazurskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAJ -->
+    <div class="month-section" data-section-month="5">
+        <div class="month-header">
+            <div class="month-name">Maj</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">9 wydarzeń</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card highlight" data-month="5">
+                <div class="event-date"><div class="event-date-day">01</div><div class="event-date-month">Maj</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-mp">MP</span><span class="badge badge-ultra">Ultra</span></div>
+                    <div class="event-title">Ultra Stilo 6 — MP w 24-godzinnym — Sztafety</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Stilo, woj. pomorskie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="5">
+                <div class="event-date"><div class="event-date-day">16</div><div class="event-date-month">Maj</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg Krokodyla</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Poznań, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="5">
+                <div class="event-date"><div class="event-date-day">17</div><div class="event-date-month">Maj</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">BolesławiecRun — Europejski Bieg na Zdrowie</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bolesławiec, woj. dolnośląskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card highlight" data-month="5">
+                <div class="event-date"><div class="event-date-day">22–24</div><div class="event-date-month">Maj</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-ultra">Rekordy</span></div>
+                    <div class="event-title">Ultra Nordic Walking World Records</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Toruń, woj. kujawsko-pomorskie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="5">
+                <div class="event-date"><div class="event-date-day">23</div><div class="event-date-month">Maj</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-puchar">Puchar PP</span></div>
+                    <div class="event-title">Puchar Polski Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Gostyń, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span><span class="dist-tag">20 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="5">
+                <div class="event-date"><div class="event-date-day">24</div><div class="event-date-month">Maj</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">BoryRun 2026</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Zamek Kliczków, woj. dolnośląskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="5">
+                <div class="event-date"><div class="event-date-day">24</div><div class="event-date-month">Maj</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">Bieg ku pamięci Stanisława Dzięgielewskiego</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Oberwia, woj. mazowieckie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="5">
+                <div class="event-date"><div class="event-date-day">30</div><div class="event-date-month">Maj</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-puchar">Puchar PP</span></div>
+                    <div class="event-title">Puchar Polski Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Stare Babice, woj. mazowieckie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span><span class="dist-tag">20 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="5">
+                <div class="event-date"><div class="event-date-day">31</div><div class="event-date-month">Maj</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Cykl</span></div>
+                    <div class="event-title">Kurdeszowa (za)Dyszka</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kostrzyn, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CZERWIEC -->
+    <div class="month-section" data-section-month="6">
+        <div class="month-header">
+            <div class="month-name">Czerwiec</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">8 wydarzeń</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card highlight" data-month="6">
+                <div class="event-date"><div class="event-date-day">06</div><div class="event-date-month">Cze</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-mp">MP</span></div>
+                    <div class="event-title">Mistrzostwa Polski Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Gorzów Wlkp., woj. lubuskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span><span class="dist-tag">20 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="6">
+                <div class="event-date"><div class="event-date-day">13</div><div class="event-date-month">Cze</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-fest">Festiwal</span></div>
+                    <div class="event-title">Wielonek Trial Festiwal</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Wielonek, woj. kujawsko-pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="6">
+                <div class="event-date"><div class="event-date-day">14</div><div class="event-date-month">Cze</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">NW</span></div>
+                    <div class="event-title">Goch Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bytów, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="6">
+                <div class="event-date"><div class="event-date-day">14</div><div class="event-date-month">Cze</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">IX Krwiobieg Warszawa</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Warszawa, woj. mazowieckie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="6">
+                <div class="event-date"><div class="event-date-day">26</div><div class="event-date-month">Cze</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-fest">Festiwal</span></div>
+                    <div class="event-title">Roztoczański Festiwal Biegowy</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Basznia Dolna, woj. podkarpackie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="6">
+                <div class="event-date"><div class="event-date-day">27</div><div class="event-date-month">Cze</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">VII Bieg Pamięci Gołanieckiej Kompanii Powstańczej</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Gołańcz, woj. wielkopolskie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="6">
+                <div class="event-date"><div class="event-date-day">27</div><div class="event-date-month">Cze</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-liga">Liga Północy</span></div>
+                    <div class="event-title">Liga Północy Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Giżycko, woj. warmińsko-mazurskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="6">
+                <div class="event-date"><div class="event-date-day">27</div><div class="event-date-month">Cze</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Cykl</span></div>
+                    <div class="event-title">II Siekiera Run</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Siekierki, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIPIEC -->
+    <div class="month-section" data-section-month="7">
+        <div class="month-header">
+            <div class="month-name">Lipiec</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">5 wydarzeń</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card highlight" data-month="7">
+                <div class="event-date"><div class="event-date-day">04</div><div class="event-date-month">Lip</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-mp">MP Technika</span></div>
+                    <div class="event-title">Mistrzostwa Polski w technice Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Orle, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="7">
+                <div class="event-date"><div class="event-date-day">18</div><div class="event-date-month">Lip</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-puchar">Puchar PP</span></div>
+                    <div class="event-title">Puchar Polski Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Skrwilno, woj. kujawsko-pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span><span class="dist-tag">20 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="7">
+                <div class="event-date"><div class="event-date-day">18</div><div class="event-date-month">Lip</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-puchar">Puchar PP</span></div>
+                    <div class="event-title">Puchar Polski Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Wągrowiec, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="7">
+                <div class="event-date"><div class="event-date-day">25</div><div class="event-date-month">Lip</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-liga">Liga Północy</span></div>
+                    <div class="event-title">Liga Północy Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Szczecin, woj. zachodniopomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="7">
+                <div class="event-date"><div class="event-date-day">31</div><div class="event-date-month">Lip</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Cykl</span></div>
+                    <div class="event-title">Bieg do nocy</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Siedleczek, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIERPIEŃ -->
+    <div class="month-section" data-section-month="8">
+        <div class="month-header">
+            <div class="month-name">Sierpień</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">2 wydarzenia</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card highlight" data-month="8">
+                <div class="event-date"><div class="event-date-day">22</div><div class="event-date-month">Sie</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-me">ME</span></div>
+                    <div class="event-title">Mistrzostwa Europy Nordic Walking 2026</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bełchatów, woj. łódzkie</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="8">
+                <div class="event-date"><div class="event-date-day">29</div><div class="event-date-month">Sie</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-puchar">Puchar PP</span></div>
+                    <div class="event-title">Puchar Polski Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Miastko, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span><span class="dist-tag">20 km</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WRZESIEŃ -->
+    <div class="month-section" data-section-month="9">
+        <div class="month-header">
+            <div class="month-name">Wrzesień</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">3 wydarzenia</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card" data-month="9">
+                <div class="event-date"><div class="event-date-day">12</div><div class="event-date-month">Wrz</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-liga">Liga Centrum</span></div>
+                    <div class="event-title">Liga Centrum Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Leszno, woj. mazowieckie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="9">
+                <div class="event-date"><div class="event-date-day">26</div><div class="event-date-month">Wrz</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Cykl</span></div>
+                    <div class="event-title">IX Bieg Pieczonej Pyry</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Iwno, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="9">
+                <div class="event-date"><div class="event-date-day">26</div><div class="event-date-month">Wrz</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-liga">Liga Zachodu</span></div>
+                    <div class="event-title">Liga Zachodu Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Oborniki, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAŹDZIERNIK -->
+    <div class="month-section" data-section-month="10">
+        <div class="month-header">
+            <div class="month-name">Październik</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">4 wydarzenia</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card" data-month="10">
+                <div class="event-date"><div class="event-date-day">03</div><div class="event-date-month">Paź</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-liga">Liga Centrum</span></div>
+                    <div class="event-title">Liga Centrum Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pabianice, woj. łódzkie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="10">
+                <div class="event-date"><div class="event-date-day">17</div><div class="event-date-month">Paź</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-liga">Liga Centrum</span></div>
+                    <div class="event-title">Liga Centrum Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bełchatów, woj. łódzkie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="10">
+                <div class="event-date"><div class="event-date-day">18</div><div class="event-date-month">Paź</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-local">Lokalne</span></div>
+                    <div class="event-title">XVII Półmaraton Ziemi Puckiej</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Puck, woj. pomorskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span></div>
+                </div>
+                <div></div>
+            </div>
+            <div class="event-card" data-month="10">
+                <div class="event-date"><div class="event-date-day">24</div><div class="event-date-month">Paź</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-liga">Liga Zachodu</span></div>
+                    <div class="event-title">Liga Zachodu Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kostrzyn, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LISTOPAD -->
+    <div class="month-section" data-section-month="11">
+        <div class="month-header">
+            <div class="month-name">Listopad</div>
+            <div class="month-year">2026</div>
+            <div class="month-count">1 wydarzenie</div>
+        </div>
+        <div class="events-list">
+            <div class="event-card" data-month="11">
+                <div class="event-date"><div class="event-date-day">07</div><div class="event-date-month">Lis</div></div>
+                <div class="event-body">
+                    <div class="event-badges"><span class="badge badge-puchar">Puchar PP</span></div>
+                    <div class="event-title">Puchar Polski Nordic Walking</div>
+                    <div class="event-meta">
+                        <span class="event-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pleszew, woj. wielkopolskie</span>
+                    </div>
+                    <div class="event-distances"><span class="dist-tag">5 km</span><span class="dist-tag">10 km</span><span class="dist-tag">20 km</span></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</content>
+</invoke>
+</div>
+
+<!-- ── NW INFO ── -->
+<section class="nw-info">
+    <div class="nw-info-text">
+        <h2>Czym jest Nordic Walking?</h2>
+        <p>Nordic Walking to marsz z kijkami — sport dla każdego, niezależnie od wieku i kondycji. Angażuje 90% mięśni ciała, odciąża stawy i poprawia wydolność. To nie bieganie, nie kolarstwo — to chodzenie z techniką, które daje więcej niż zwykły spacer.</p>
+    </div>
+    <div class="nw-info-features">
+        <div class="nw-feature">
+            <div class="nw-feature-icon">🥾</div>
+            <h4>Marsz z kijkami</h4>
+            <p>Technika chodu z kijkami Nordic Walking na płaskim terenie i trasach leśnych</p>
+        </div>
+        <div class="nw-feature">
+            <div class="nw-feature-icon">💪</div>
+            <h4>90% mięśni</h4>
+            <p>Angażuje prawie wszystkie partie mięśniowe podczas marszu</p>
+        </div>
+        <div class="nw-feature">
+            <div class="nw-feature-icon">🌿</div>
+            <h4>Dla każdego</h4>
+            <p>Od 10 do 80+ lat — kategorie wiekowe na każdych zawodach</p>
+        </div>
+        <div class="nw-feature">
+            <div class="nw-feature-icon">📍</div>
+            <h4>Cała Polska</h4>
+            <p>38 wydarzeń w 10 miesięcy — od Pomorza po Podkarpacie</p>
+        </div>
+    </div>
+</section>
+
+<!-- ── INFO BAR ── -->
+<div class="info-bar">
+    <div class="info-bar-inner">
+        <div class="info-item">
+            <h4>Polska Liga NW</h4>
+            <p>Patronat World ONWF. 4 ligi regionalne. Top 5 wyników do klasyfikacji. <a href="https://poland.nordicwalkingworldleague.com/pl/" target="_blank">PLNW &rarr;</a></p>
+        </div>
+        <div class="info-item">
+            <h4>INWS — Puchar NW</h4>
+            <p>Cykl PFNW/INWA. Otwarte MP na 5, 10, 21 km. Sztafety, ultra. <a href="https://inws.info/puchar_nordic_walking/" target="_blank">INWS &rarr;</a></p>
+        </div>
+        <div class="info-item">
+            <h4>Zapisy online</h4>
+            <p><a href="https://elektronicznezapisy.pl/2/nordic-walking.html" target="_blank">elektronicznezapisy.pl</a> · <a href="https://kijemwoko.pl/zapisy-nordic-walking/" target="_blank">kijemwoko.pl</a> · 30–80 PLN</p>
+        </div>
+        <div class="info-item">
+            <h4>Start online</h4>
+            <p>Wiele etapów Polskiej Ligi NW pozwala startować zdalnie — przejdź trasę i prześlij GPS.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-logo">NW Polska 2026</div>
+    <p>Kalendarz opracowany na podstawie danych ze źródeł oficjalnych. Daty mogą ulec zmianie — weryfikuj u&nbsp;organizatorów.</p>
+    <div class="footer-sources">
+        <a href="https://poland.nordicwalkingworldleague.com/pl/" target="_blank">ONWF</a> ·
+        <a href="https://inws.info/puchar_nordic_walking/" target="_blank">INWS</a> ·
+        <a href="https://elektronicznezapisy.pl/2/nordic-walking.html" target="_blank">elektronicznezapisy.pl</a> ·
+        <a href="https://kijemwoko.pl/zapisy-nordic-walking/" target="_blank">kijemwoko.pl</a> ·
+        <a href="https://chodzezkijami.pl/kalendarium" target="_blank">chodzezkijami.pl</a> ·
+        <a href="http://pfnw.eu/kalendarz-imprez/" target="_blank">PFNW</a>
+        <br><br>Ostatnia aktualizacja: luty 2026
+    </div>
+</footer>
+
+<script>
+// Month filtering
+document.querySelectorAll('.month-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const month = btn.dataset.month;
+        document.querySelectorAll('.month-section').forEach(section => {
+            section.style.display = (month === 'all' || section.dataset.sectionMonth === month) ? '' : 'none';
+        });
+        if (month !== 'all') {
+            const target = document.querySelector(`.month-section[data-section-month="${month}"]`);
+            if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
+    });
+});
+
+// Sticky nav shadow
+const nav = document.getElementById('monthNav');
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 100);
+}, { passive: true });
+
+// Card reveal animation
+const cardObserver = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 60);
+            cardObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.event-card').forEach(card => {
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    cardObserver.observe(card);
+});
+
+// Highlight active month on scroll
+const monthSections = document.querySelectorAll('.month-section');
+const monthBtns = document.querySelectorAll('.month-btn');
+
+const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const month = entry.target.dataset.sectionMonth;
+            monthBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.month === month);
+            });
+        }
+    });
+}, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+
+monthSections.forEach(section => sectionObserver.observe(section));
+
+// Position distance filter below sticky nav
+const distWrap = document.querySelector('.dist-filter-wrap');
+if (distWrap && nav) {
+    distWrap.style.top = nav.offsetHeight + 'px';
+}
+
+// Distance filter — predefined buckets
+(function() {
+    const filterBar = document.getElementById('distFilter');
+    const cards = document.querySelectorAll('.event-card');
+
+    function parseDist(text) {
+        const t = text.trim().toLowerCase();
+        if (/\d+h/.test(t)) return 9998;
+        const m = t.replace(',', '.').match(/([\d.]+)/);
+        return m ? parseFloat(m[1]) : null;
+    }
+
+    // Predefined filter buckets: [id, label, matchFn]
+    const buckets = [
+        ['3',      '3 km',      v => v === 3],
+        ['5',      '5 km',      v => v === 5],
+        ['5.5-9',  '5,5–9 km',  v => v >= 5.5 && v <= 9],
+        ['10',     '10 km',     v => v === 10],
+        ['11.5',   '11,5 km',   v => v === 11.5],
+        ['20',     '20 km',     v => v === 20],
+        ['21',     '21 km',     v => v >= 21 && v < 22],
+        ['22.5+',  '> 22,5 km', v => v >= 22.5 && v < 9998],
+    ];
+
+    buckets.forEach(([id, label]) => {
+        const btn = document.createElement('button');
+        btn.className = 'dist-filter-btn';
+        btn.dataset.dist = id;
+        btn.textContent = label;
+        filterBar.appendChild(btn);
+    });
+
+    filterBar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.dist-filter-btn');
+        if (!btn) return;
+
+        filterBar.querySelectorAll('.dist-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const distId = btn.dataset.dist;
+
+        if (distId === 'all') {
+            cards.forEach(c => c.style.display = '');
+        } else {
+            const bucket = buckets.find(b => b[0] === distId);
+            const matchFn = bucket ? bucket[2] : () => false;
+
+            cards.forEach(card => {
+                const tags = card.querySelectorAll('.dist-tag');
+                let match = false;
+                tags.forEach(tag => {
+                    const v = parseDist(tag.textContent);
+                    if (v !== null && matchFn(v)) match = true;
+                });
+                card.style.display = match ? '' : 'none';
+            });
+        }
+
+        document.querySelectorAll('.month-section').forEach(section => {
+            const visible = section.querySelectorAll('.event-card:not([style*="display: none"])');
+            section.style.display = visible.length > 0 ? '' : 'none';
+        });
+    });
+})();
+</script>
+
+<button class="scroll-top" id="scrollTop" aria-label="Wróć na górę">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<script>
+(function(){
+    const btn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    }, {passive: true});
+    btn.addEventListener('click', () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+})();
+</script>
+
+</body>
+</html>
