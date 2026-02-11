@@ -841,6 +841,13 @@
                 padding: 1.2rem 1rem;
             }
 
+            .event-date {
+                width: 56px;
+                height: 56px;
+            }
+            .event-date-day { font-size: 1.4rem; }
+            .event-date-month { font-size: 0.7rem; }
+
             .event-link {
                 grid-column: 1 / -1;
                 justify-self: start;
@@ -848,9 +855,23 @@
 
             .event-actions {
                 grid-column: 1 / -1;
-                align-items: flex-start;
                 flex-direction: row;
                 flex-wrap: wrap;
+                align-items: center;
+                gap: 6px;
+            }
+            .event-actions a,
+            .event-actions button {
+                font-size: 0.72rem;
+                padding: 0.4rem 0.7rem;
+            }
+
+            .fav-btn {
+                padding: 0.35rem 0.7rem;
+                font-size: 0.7rem;
+            }
+            .fav-btn-wrap {
+                margin-top: 2px;
             }
 
             .hero-stats { gap: 2rem; }
