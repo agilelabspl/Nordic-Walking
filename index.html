@@ -1035,16 +1035,16 @@
         .event-card.hidden { display: none; }
         .month-section.hidden { display: none; }
 
-        /* ── NO RESULTS ── */
-        .no-results {
+        /* ── FILTER INFO ── */
+        .filter-info {
             display: none;
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 1.5rem 2rem;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
-        .no-results.visible { display: block; }
-        .no-results strong { color: var(--gray-900); }
+        .filter-info.visible { display: block; }
+        .filter-info strong { color: var(--gray-900); font-weight: 600; }
     </style>
 </head>
 <body>
@@ -2212,7 +2212,7 @@
     </div>
 </div>
 
-<div class="no-results" id="noResults"><strong>Brak zawodów</strong> dla wybranych filtrów. Spróbuj zmienić kryteria wyszukiwania.</div>
+<div class="filter-info" id="filterInfo">Znalazłem dla Ciebie <strong id="filterCount">0</strong> zawodów</div>
 
 <!-- ── NW INFO ── -->
 <section class="nw-info">
@@ -2304,7 +2304,8 @@
     var myCount = document.getElementById('myCount');
     var shareAllBtn = document.getElementById('shareAllBtn');
     var shareAllWrap = document.getElementById('shareAllWrap');
-    var noResults = document.getElementById('noResults');
+    var filterInfo = document.getElementById('filterInfo');
+    var filterCount = document.getElementById('filterCount');
     var scrollTopBtn = document.getElementById('scrollTop');
 
     // ── FILTER STATE ──
@@ -2381,9 +2382,10 @@
             sec.classList.toggle('hidden', sec.querySelectorAll('.event-card:not(.hidden)').length === 0);
         });
 
-        // No results
+        // Filter info
         var anyFilter = state.month !== 'all' || state.dist !== 'all' || state.region !== 'all' || state.favOnly;
-        noResults.classList.toggle('visible', anyFilter && totalVisible === 0);
+        filterCount.textContent = totalVisible;
+        filterInfo.classList.toggle('visible', anyFilter);
     }
 
     // ── DYNAMIC STATS ──
