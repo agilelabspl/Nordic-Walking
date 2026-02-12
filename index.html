@@ -2368,6 +2368,9 @@
             // Region — read from data-region attr
             if (show && state.region !== 'all' && card.dataset.region !== state.region) show = false;
 
+            // Month — read from data-month attr
+            if (show && state.month !== 'all' && card.dataset.month !== state.month) show = false;
+
             card.classList.toggle('hidden', !show);
             if (show) totalVisible++;
         });
