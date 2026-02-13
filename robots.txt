@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /archeo/
+Disallow: /3d/
+
+Sitemap: https://zawszedoprzodu.pl/sitemap.xml
